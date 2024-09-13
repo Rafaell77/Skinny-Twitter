@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigos - Twitter Clone</title>
+    <style>
+        /* CSS inline */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6ecf0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+        }
+
+        .friends-container {
+            width: 70%;
+            max-width: 1200px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #1da1f2;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .comment {
+            border-bottom: 1px solid #e1e8ed;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+            color: #1da1f2;
+        }
+
+        .timestamp {
+            color: #657786;
+            font-size: 14px;
+        }
+
+        .comment-content {
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .comment-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .comment-actions button {
+            background-color: #1da1f2;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .comment-actions button:hover {
+            background-color: #1a91da;
+        }
+
+        .new-comment {
+            margin-top: 20px;
+        }
+
+        .new-comment textarea {
+            border: 1px solid #e1e8ed;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+            min-height: 60px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        .new-comment button {
+            background-color: #1da1f2;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .new-comment button:hover {
+            background-color: #1a91da;
+        }
+    </style>
+</head>
+<body>
+    <div class="friends-container">
+        <div class="header">
+            Comentários dos Amigos
+        </div>
+        <div class="comments-list">
+            <!-- Exemplo de comentários -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">Rafael</span>
+                    <span class="timestamp">2024-09-11 10:30</span>
+                </div>
+                <p class="comment-content">Hoje foi um dia muito produtivo na programação.</p>
+                <div class="comment-actions">
+                    <button>Curtir</button>
+                    <button>Discutir</button>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">Ana</span>
+                    <span class="timestamp">2024-09-11 11:45</span>
+                </div>
+                <p class="comment-content">Acabei de ler um livro incrível sobre Django!</p>
+                <div class="comment-actions">
+                    <button>Curtir</button>
+                    <button>Discutir</button>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">João</span>
+                    <span class="timestamp">2024-09-11 12:00</span>
+                </div>
+                <p class="comment-content">Excelente palestra sobre desenvolvimento web hoje.</p>
+                <div class="comment-actions">
+                    <button>Curtir</button>
+                    <button>Discutir</button>
+                </div>
+            </div>
+            <!-- Fim dos exemplos de comentários -->
+        </div>
+        <div class="new-comment">
+            <form method="post" action="{% url 'add_comment' %}">
+                {% csrf_token %}
+                <textarea name="content" placeholder="Adicionar um comentário..."></textarea>
+                <button type="submit">Comentar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

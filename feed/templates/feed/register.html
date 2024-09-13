@@ -1,0 +1,22 @@
+<!-- feed/templates/feed/register.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar - Twitter Clone</title>
+    <link rel="stylesheet" href="{% static 'feed/styles.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registrar</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="register-button">Registrar</button>
+        </form>
+        <p>Já tem uma conta? <a href="{% url 'login' %}">Entrar</a></p>
+    </div>
+</body>
+</html>
